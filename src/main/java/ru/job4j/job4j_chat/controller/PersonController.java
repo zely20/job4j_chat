@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMapAdapter;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.job4j.job4j_chat.entity.Person;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -36,6 +38,19 @@ public class PersonController {
         return StreamSupport.stream(
                 personRepository.findAll().spliterator(), false
         ).collect(Collectors.toList());
+    }
+
+    @GetMapping("/res/{id}")
+    public ResponseEntity<String> findByIdResp(@PathVariable int id) {
+        var person = personRepository.findById(id);
+        Object body = new HashMap<>(){{
+            put("nickname", person.get().getNickname());
+        }};
+        return new ResponseEntity(
+                body,
+                new MultiValueMapAdapter<>(Map.of("Job4jCustomHeader", List.of("job4j"))),
+                HttpStatus.OK
+        );
     }
 
     @GetMapping("/{id}")
