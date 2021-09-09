@@ -3,6 +3,9 @@ package ru.job4j.job4j_chat.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,8 +19,12 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotBlank(message = "Nickname must not be empty")
     private String nickname;
+    @NotBlank(message = "Nickname must not be empty")
     private String password;
+    @NotBlank(message = "Nickname must not be empty")
+    @Email
     private String email;
     @OneToMany(mappedBy = "person")
     private List<Message> messages = new ArrayList<>();
