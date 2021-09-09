@@ -16,5 +16,4 @@ public class Message {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "person_id")
     private Person person;
-
 }

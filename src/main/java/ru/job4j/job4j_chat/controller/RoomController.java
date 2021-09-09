@@ -33,7 +33,7 @@ public class RoomController {
     @GetMapping("/{id}")
     public ResponseEntity<Room> findById(@PathVariable int id) {
         Optional<Room> role = roomRepository.findById(id);
-        return new ResponseEntity<>(role.orElse(new Room()),
+        return new ResponseEntity<>(role.get(),
                 role.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
@@ -51,9 +51,7 @@ public class RoomController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Room> delete(@PathVariable int id) {
-        Room room = new Room();
-        room.setId(id);
-        roomRepository.delete(room);
+        roomRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

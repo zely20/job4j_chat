@@ -31,7 +31,7 @@ public class MessageController {
     @GetMapping("/{id}")
     public ResponseEntity<Message> findById(@PathVariable int id) {
         Optional<Message> message = messageRepository.findById(id);
-        return new ResponseEntity<>(message.orElse(new Message()),
+        return new ResponseEntity<>(message.get(),
                 message.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
@@ -49,9 +49,7 @@ public class MessageController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Message> delete(@PathVariable int id) {
-        Message message = new Message();
-        message.setId(id);
-        messageRepository.delete(message);
+        messageRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

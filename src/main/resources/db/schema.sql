@@ -24,7 +24,8 @@ CREATE TABLE persons_roles(
 CREATE TABLE messages(
     id serial primary key not null,
     message text,
-    person_id int REFERENCES persons(id)
+    person_id int REFERENCES persons(id),
+    room_id int REFERENCES rooms(id)
 );
 
 CREATE TABLE rooms(

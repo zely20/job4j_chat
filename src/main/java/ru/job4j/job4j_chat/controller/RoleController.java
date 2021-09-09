@@ -49,9 +49,7 @@ public class RoleController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Role> delete(@PathVariable int id) {
-        Role role = new Role();
-        role.setId(id);
-        roleRepository.delete(role);
+        roleRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

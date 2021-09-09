@@ -21,7 +21,7 @@ public class Person {
     private String email;
     @OneToMany(mappedBy = "person")
     private List<Message> messages = new ArrayList<>();
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="persons_roles",
             joinColumns=@JoinColumn(name="persons_id"),
             inverseJoinColumns=@JoinColumn(name="roles_id"))
