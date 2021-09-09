@@ -21,7 +21,7 @@ public class MessageController {
         this.messageRepository = messageRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Message> findAll(){
         return StreamSupport.stream(
                 messageRepository.findAll().spliterator(), false
@@ -35,13 +35,13 @@ public class MessageController {
                 message.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update (@RequestBody Message message) {
         messageRepository.save(message);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Message> create(@RequestBody Message message) {
         return new ResponseEntity<>(messageRepository.save(message),
                 HttpStatus.CREATED);

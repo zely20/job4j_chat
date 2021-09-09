@@ -33,7 +33,7 @@ public class PersonController {
         this.personRepository = personRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Person> findAll(){
         return StreamSupport.stream(
                 personRepository.findAll().spliterator(), false
@@ -59,7 +59,7 @@ public class PersonController {
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Person is not found."));
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update (@RequestBody Person person) {
         var username = person.getNickname();
         var password = person.getPassword();
@@ -70,7 +70,7 @@ public class PersonController {
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Person> create(@RequestBody Person person) {
         var username = person.getNickname();
         var password = person.getPassword();

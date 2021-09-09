@@ -23,7 +23,7 @@ public class RoomController {
         this.roomRepository = roomRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Room> findAll(){
         return StreamSupport.stream(
                 roomRepository.findAll().spliterator(), false
@@ -37,7 +37,7 @@ public class RoomController {
                 role.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update (@RequestBody Room room) {
         roomRepository.save(room);
         return ResponseEntity.ok().build();

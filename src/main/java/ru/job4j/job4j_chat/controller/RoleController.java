@@ -21,7 +21,7 @@ public class RoleController {
         this.roleRepository = roleRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Role> findAll(){
         return StreamSupport.stream(
                 roleRepository.findAll().spliterator(), false
@@ -35,13 +35,13 @@ public class RoleController {
                 role.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update (@RequestBody Role role) {
         roleRepository.save(role);
         return ResponseEntity.ok().build();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<Role> create(@RequestBody Role role) {
         return new ResponseEntity<>(roleRepository.save(role),
                 HttpStatus.CREATED);
