@@ -26,7 +26,7 @@ public class UserController {
         users.save(person);
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public List<Person> findAll() {
         return users.findAll();
     }

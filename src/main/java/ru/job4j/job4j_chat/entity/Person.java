@@ -1,11 +1,11 @@
 package ru.job4j.job4j_chat.entity;
 
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "persons")
+@Validated
 public class Person {
 
     @Id

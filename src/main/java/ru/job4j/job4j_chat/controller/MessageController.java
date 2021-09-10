@@ -57,8 +57,8 @@ public class MessageController {
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/example2")
-    public Message example2(@RequestBody Message message) throws InvocationTargetException, IllegalAccessException {
+    @PatchMapping("/message-dto")
+    public Message getMessageDTO(@RequestBody Message message) throws InvocationTargetException, IllegalAccessException {
         var current = messageRepository.findById(message.getId()).get();
         if (current == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
