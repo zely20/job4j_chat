@@ -22,4 +22,7 @@ public class UserStore {
     public List<Person> findAll() {
         return new ArrayList<>(users.values());
     }
+    public Person findById(String id) {
+        return users.get(id);
+    }
 }
