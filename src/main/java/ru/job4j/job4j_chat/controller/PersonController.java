@@ -11,7 +11,6 @@ import org.springframework.util.MultiValueMapAdapter;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.job4j.job4j_chat.dto.PersonDTO;
-import ru.job4j.job4j_chat.entity.Message;
 import ru.job4j.job4j_chat.entity.Person;
 import ru.job4j.job4j_chat.repository.PersonRepository;
 import ru.job4j.job4j_chat.service.PersonService;
