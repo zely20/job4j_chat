@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name = "messages")
-public class Role {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
